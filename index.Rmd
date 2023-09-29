@@ -1,6 +1,6 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
+author: "Marcela Castillo Mejia"
 description: "My final project"
 output:
   distill::distill_article:
