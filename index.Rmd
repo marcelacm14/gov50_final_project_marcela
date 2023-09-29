@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am keen to investigate data concerning Nicaraguan migration post-2018. Following the 2018 protests and the student movement, approximately 700,000 Nicaraguan citizens emigrated between 2018 and 2023, with the majority relocating to Costa Rica, the United States, and Spain. If I secure the data for this research endeavor, my objective will be to analyze the various migration trends of Nicaraguans since 2018. The ultimate aim is to discern the demographics (age, economic status, and ethnicity) most impacted by this migration and to ascertain which nations have been most welcoming to Nicaraguan migrants.
