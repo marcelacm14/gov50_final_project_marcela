@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-1-2.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","Nicaragua Asylum Decisions copy.csv","Nicaragua Asylum Decisions copy.xlsx","Nicaragua Asylum Filings.csv"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-1-2.png","index_files/figure-html5/unnamed-chunk-10-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-3-2.png","index_files/figure-html5/unnamed-chunk-3-3.png","index_files/figure-html5/unnamed-chunk-3-4.png","index_files/figure-html5/unnamed-chunk-3-5.png","index_files/figure-html5/unnamed-chunk-3-6.png","index_files/figure-html5/unnamed-chunk-3-7.png","index_files/figure-html5/unnamed-chunk-3-8.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/figure-html5/unnamed-chunk-8-1.png","index_files/figure-html5/unnamed-chunk-9-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","Nicaragua Asylum Decisions copy.csv","Nicaragua Asylum Decisions copy.xlsx","Nicaragua Asylum Filings.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1527,7 +1527,7 @@ My first outcome variable is the count of asylum filings by Nicaraguans in the U
 These variables are measured using the official data from TRAC and other relevant immigration authorities, ensuring accuracy and comprehensiveness in the counts.
 If I observe a marked increase in both asylum filings and decisions corresponding with the timing of the socio-political crisis in Nicaragua, this would provide strong support for my hypothesis. Conversely, if I observe no change or a decrease in these numbers in the period of interest, this would argue against my hypothesis.
 In my regression analysis, positive, significant coefficients on the crisis indicator variable for both outcome variables would indicate support for my hypothesis, showing that the 2018 socio-political crisis in Nicaragua is associated with increased asylum filings and decisions in the U.S.</p>
-<p>##Milestone 3</p>
+##Milestone 3
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#downloading packages</span></span>
@@ -1542,21 +1542,7 @@ In my regression analysis, positive, significant coefficients on the crisis indi
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
 <span></span>
-<span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
- [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
- [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
-[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
-[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
-[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
-[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
-[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
-[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
-[28] &quot;X2023&quot;         </code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>==</span> <span class='st'>"State"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
@@ -1567,22 +1553,6 @@ In my regression analysis, positive, significant coefficients on the crisis indi
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-1-1.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
-<span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
-</div>
-<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
- [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
- [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
-[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
-[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
-[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
-[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
-[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
-[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
-[28] &quot;X2023&quot;         </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
@@ -1605,13 +1575,826 @@ In my regression analysis, positive, significant coefficients on the crisis indi
 <span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
-<img src="index_files/figure-html5/unnamed-chunk-1-2.png" width="624" />
+<p><img src="index_files/figure-html5/unnamed-chunk-1-2.png" width="624" /></p>
+</div>
+<p>##Milestone 4</p>
+<p>This analysis explores the effects of the 2018 socio-political crisis in Nicaragua on the number of asylum requests and decisions in the United States. Examining data from 2001 to 2023, it becomes evident that there has been a significant increase in asylum applications from Nicaraguan citizens after 2018, which supports the previously hypothesized surge resulting from the crisis. However, it’s important to note that these findings alone do not fully explain why refugees choose to settle in specific states. The noticeable uptick in both application rates and outcomes, especially in states like California and Texas, implies a possible connection between the political turmoil and the decision to seek asylum. Nevertheless, this analysis acknowledges the importance of considering other influencing factors that might contribute to these trends. The accompanying visual representations illustrate the chronological evolution of asylum requests and decisions, reinforcing the initial assumption that the crisis had an impact. Further research is necessary to disentangle the complex interplay of variables that guide the refugees’ choice of destination and to provide a more comprehensive understanding of these migration patterns.</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># merge by year, each for year: one column for filing, one column for decisions, </span></span>
-<span><span class='co'># use left_join(data1, data2)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#downloading packages</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#Milestone 4 complete code</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"California"</span>,<span class='op'>]</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years -- California"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Texas"</span>,<span class='op'>]</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years -- Texas"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-3.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum_decisions</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ratio</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Ratio of Approved to Denied Applications Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Ratio"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-4.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Denied</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-5.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-6.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Texas"</span>,<span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years - Texas"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-3-7.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Oregon"</span>,<span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years - Oregon"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-8.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#Total Asylum Filings Over the Years</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#Total Asylum Filings Over the Years -- California"</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"California"</span>,<span class='op'>]</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years -- California"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>## Total Asylum Filings Over the Years -- Texas</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_filings</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Texas"</span>,<span class='op'>]</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings Over the Years -- Texas"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>##Ratio of Approved to Denied Applications Over the Years</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum_decisions</span>, </span>
+<span>       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ratio</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Ratio of Approved to Denied Applications Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Ratio"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>##"Total Asylum Filings and Approved Filings Over the Years</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>##Total Asylum Filings and Approved Filings Over the Years - Texas</span></span>
+<span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Texas"</span>,<span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years - Texas"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_asylum_filings</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Filings.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"Nicaragua Asylum Decisions copy.csv"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_filings</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;         &quot;All&quot;            &quot;Never.Detained&quot;
+ [4] &quot;Detained&quot;       &quot;Released&quot;       &quot;X2001&quot;         
+ [7] &quot;X2002&quot;          &quot;X2003&quot;          &quot;X2004&quot;         
+[10] &quot;X2005&quot;          &quot;X2006&quot;          &quot;X2007&quot;         
+[13] &quot;X2008&quot;          &quot;X2009&quot;          &quot;X2010&quot;         
+[16] &quot;X2011&quot;          &quot;X2012&quot;          &quot;X2013&quot;         
+[19] &quot;X2014&quot;          &quot;X2015&quot;          &quot;X2016&quot;         
+[22] &quot;X2017&quot;          &quot;X2018&quot;          &quot;X2019&quot;         
+[25] &quot;X2020&quot;          &quot;X2021&quot;          &quot;X2022&quot;         
+[28] &quot;X2023&quot;         </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>nicaragua_asylum_decisions</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code> [1] &quot;Filing&quot;               &quot;All&quot;                 
+ [3] &quot;Asylum.Granted&quot;       &quot;Asylum.Relief.Denied&quot;
+ [5] &quot;Other.Relief.Granted&quot; &quot;X2001.Denied&quot;        
+ [7] &quot;X2001&quot;                &quot;X2002.Denied&quot;        
+ [9] &quot;X2002&quot;                &quot;X2003.Denied&quot;        
+[11] &quot;X2003&quot;                &quot;X2004.Denied&quot;        
+[13] &quot;X2004&quot;                &quot;X2005.Denied&quot;        
+[15] &quot;X2005&quot;                &quot;X2006.Denied&quot;        
+[17] &quot;X2006&quot;                &quot;X2007.Denied&quot;        
+[19] &quot;X2007&quot;                &quot;X2008.Denied&quot;        
+[21] &quot;X2008&quot;                &quot;X2009.Denied&quot;        
+[23] &quot;X2009&quot;                &quot;X2010.Denied&quot;        
+[25] &quot;X2010&quot;                &quot;X2011.Denied&quot;        
+[27] &quot;X2011&quot;                &quot;X2012.Denied&quot;        
+[29] &quot;X2012&quot;                &quot;X2013.Denied&quot;        
+[31] &quot;X2013&quot;                &quot;X2014.Denied&quot;        
+[33] &quot;X2014&quot;                &quot;X2015.Denied&quot;        
+[35] &quot;X2015&quot;                &quot;X2016.Denied&quot;        
+[37] &quot;X2016&quot;                &quot;X2017.Denied&quot;        
+[39] &quot;X2017&quot;                &quot;X2018.Denied&quot;        
+[41] &quot;X2018&quot;                &quot;X2019.Denied&quot;        
+[43] &quot;X2019&quot;                &quot;X2020.Denied&quot;        
+[45] &quot;X2020&quot;                &quot;X2021.Denied&quot;        
+[47] &quot;X2021&quot;                &quot;X2022.Denied&quot;        
+[49] &quot;X2022&quot;                &quot;X2023.Denied&quot;        
+[51] &quot;X2023&quot;               </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>nicaragua_filings</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_filings</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Filings"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Filings <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_approved</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Approved"</span>, <span class='st'>"X2001"</span><span class='op'>:</span><span class='st'>"X2023"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Approved <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_filings_denied</span> <span class='op'>&lt;-</span> <span class='va'>nicaragua_asylum_decisions</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Filing</span>,<span class='va'>All</span>,<span class='va'>Asylum.Granted</span>,<span class='va'>Asylum.Relief.Denied</span>,<span class='va'>Other.Relief.Granted</span>,<span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>ends_with</a></span><span class='op'>(</span><span class='st'>"Denied"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"All"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Filing</span> <span class='op'>!=</span> <span class='st'>"Not Known"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>State<span class='op'>=</span><span class='va'>Filing</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span>key <span class='op'>=</span> <span class='st'>"Year"</span>, value <span class='op'>=</span> <span class='st'>"Denied"</span>, <span class='st'>"X2001.Denied"</span><span class='op'>:</span><span class='st'>"X2023.Denied"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Year<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substr</a></span><span class='op'>(</span><span class='va'>Year</span>,<span class='fl'>2</span>,<span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>Denied <span class='op'>=</span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Denied</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum_decisions</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings_approved</span>,<span class='va'>nicaragua_filings_denied</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ratio <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>/</span><span class='va'>Denied</span> <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>nicaragua_asylum</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>nicaragua_filings</span>, <span class='va'>nicaragua_asylum_decisions</span>,by<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"State"</span>,<span class='st'>"Year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>nicaragua_asylum</span><span class='op'>[</span><span class='va'>nicaragua_filings</span><span class='op'>$</span><span class='va'>State</span><span class='op'>==</span><span class='st'>"Oregon"</span>,<span class='op'>]</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span>,color<span class='op'>=</span><span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Approved</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Filings</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total Asylum Filings and Approved Filings Over the Years - Oregon"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Year"</span>, </span>
+<span>       y <span class='op'>=</span> <span class='st'>"Number of Filings and Approved Filings"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
