@@ -1,0 +1,784 @@
+---
+title: "final project"
+output: html_document
+date: "2023-11-27"
+---
+
+Milestone 1
+
+I am keen to investigate data concerning Nicaraguan migration post-2018. Following the 2018 protests and the student movement, approximately 700,000 Nicaraguan citizens emigrated between 2018 and 2023, with the majority relocating to Costa Rica, the United States, and Spain. If I secure the data for this research endeavor, my objective will be to analyze the various migration trends of Nicaraguans since 2018. The ultimate aim is to discern the demographics (age, economic status, and ethnicity) most impacted by this migration and to ascertain which nations have been most welcoming to Nicaraguan migrants.
+
+Milestone 2
+
+In this study, I plan to examine the correlation between the 2018 socio-political crisis in Nicaragua and the subsequent trends in asylum filings and decisions in the U.S. I hypothesize that the surge in authoritarianism and the socio-political unrest in Nicaragua during and following 2018 triggered an increase in both the number of Nicaraguans seeking asylum and the number of asylum decisions by U.S. authorities. My sample is comprised of immigration data spanning from the year 2003 to 2023, capturing a broad timeframe that allows for analysis of trends before, during, and after the 2018 crisis. My units of analysis are individual years (2000:2023). The primary explanatory variable of interest is the occurrence of the socio-political crisis, which is primarily centered around the year 2018. This variable is coded =1 for years during and after the crisis (2018-2023) and =0 for years before the crisis (2003-2017).
+My first outcome variable is the count of asylum filings by Nicaraguans in the U.S. in a given year. An increase in this number in years coded as 1 would be indicative of a correlation with the crisis. My second outcome variable is the count of asylum decisions by U.S. authorities for Nicaraguan nationals, which includes both approvals and denials. A significant uptick in these numbers during and after 2018 would also support my hypothesis. These variables are measured using the official data from TRAC and other relevant immigration authorities, ensuring accuracy and comprehensiveness in the counts. If I observe a marked increase in both asylum filings and decisions corresponding with the timing of the socio-political crisis in Nicaragua, this would provide strong support for my hypothesis. Conversely, if I observe no change or a decrease in these numbers in the period of interest, this would argue against my hypothesis. In my regression analysis, positive, significant coefficients on the crisis indicator variable for both outcome variables would indicate support for my hypothesis, showing that the 2018 socio-political crisis in Nicaragua is associated with increased asylum filings and decisions in the U.S.
+
+##Milestone 3
+```{r}
+#downloading packages
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+#Downloading data
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+Updated_Governors_Data <- read.csv("Updated_Governors_Data.csv")
+library(tidyr)
+library(ggplot2)
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing == "State") |>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  filter(!is.na(Filings))
+ggplot(data = nicaragua_filings, aes(x = as.numeric(Year), y = as.numeric(Filings))) + geom_line((aes(group = 1))) + geom_point() + 
+  labs(title = "Total Asylum Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+library(tidyr)
+library(ggplot2)
+
+# Filter for the 'All' row and select the columns from 2001 to 2023
+long_data <- nicaragua_asylum_filings |>
+  filter(Filing == "All") |>
+  select("X2001":"X2023") |>
+  gather(key = "Year", value = "X2021:X2023")
+
+long_data$Year <- seq(2001,2023,1)
+colnames(long_data) <- c("Year", "Value")
+
+# Plot
+ggplot(data = long_data, aes(x = Year, y = as.numeric(Value),color="hotpink")) +
+  geom_point() +
+  geom_smooth()+
+  labs(title = "Total Asylum Filings Over the Years",
+       x = "Year",
+       y = "Number of Filings") +
+  theme_minimal()
+```
+
+
+##Milestone 4
+
+This analysis explores the effects of the 2018 socio-political crisis in Nicaragua on the number of asylum requests and decisions in the United States. Examining data from 2001 to 2023, it becomes evident that there has been a significant increase in asylum applications from Nicaraguan citizens after 2018, which supports the previously hypothesized surge resulting from the crisis. However, it’s important to note that these findings alone do not fully explain why refugees choose to settle in specific states. The noticeable uptick in both application rates and outcomes, especially in states like California and Texas, implies a possible connection between the political turmoil and the decision to seek asylum. Nevertheless, this analysis acknowledges the importance of considering other influencing factors that might contribute to these trends. The accompanying visual representations illustrate the chronological evolution of asylum requests and decisions, reinforcing the initial assumption that the crisis had an impact. Further research is necessary to disentangle the complex interplay of variables that guide the refugees’ choice of destination and to provide a more comprehensive understanding of these migration patterns.
+
+
+```{r}
+#downloading packages
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+#Milestone 4 complete code
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_filings, 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_filings[nicaragua_filings$State=="California",], 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years -- California",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_filings[nicaragua_filings$State=="Texas",], 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years -- Texas",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_asylum_decisions, 
+       aes(x = Year, y = ratio)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Ratio of Approved to Denied Applications Over the Years",
+       x = "Year", 
+       y = "Ratio") +
+  theme_minimal()
+
+ggplot(data = nicaragua_asylum_decisions) + 
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_point(aes(x = Year, y = Denied),color="red") +
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Denied)) + 
+  labs(title = "Total Asylum Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_asylum) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Texas",]) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Texas",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+
+ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Oregon",]) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Oregon",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+
+
+```
+
+```{r}
+#Total Asylum Filings Over the Years
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_filings, 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+```
+
+```{r}
+#Total Asylum Filings Over the Years -- California"
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_filings[nicaragua_filings$State=="California",], 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years -- California",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+```
+```{r}
+## Total Asylum Filings Over the Years -- Texas
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+colnames(nicaragua_asylum_filings)
+ 
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+
+ggplot(data = nicaragua_filings[nicaragua_filings$State=="Texas",], 
+       aes(x = Year, y = Filings)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Total Asylum Filings Over the Years -- Texas",
+       x = "Year", 
+       y = "Number of Filings") +
+  theme_minimal()
+
+```
+
+```{r}
+
+##Ratio of Approved to Denied Applications Over the Years
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_asylum_decisions, 
+       aes(x = Year, y = ratio)) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(title = "Ratio of Approved to Denied Applications Over the Years",
+       x = "Year", 
+       y = "Ratio") +
+  theme_minimal()
+```
+```{r}
+
+##"Total Asylum Filings and Approved Filings Over the Years
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_asylum) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+
+```
+
+
+```{r}
+##Total Asylum Filings and Approved Filings Over the Years - Texas
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+
+
+ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Texas",]) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Texas",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+
+```
+
+```{r}
+
+##Total Asylum Filings and Approved Filings Over the Years - Oregon
+nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
+nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
+
+
+nicaragua_filings <- nicaragua_asylum_filings |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Filings =  as.numeric(Filings))
+
+nicaragua_filings_approved <- nicaragua_asylum_decisions |>
+  select(!ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Approved =  as.numeric(Approved))
+
+nicaragua_filings_denied <- nicaragua_asylum_decisions |>
+  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
+  filter(Filing != "All") |>
+  filter(Filing != "Not Known") |>
+  rename(State=Filing)|>
+  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
+  mutate(Year=as.numeric(substr(Year,2,5)))|>
+  mutate(Denied =  as.numeric(Denied))
+
+nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
+  mutate(ratio = Approved/Denied )
+
+nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
+
+ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Oregon",]) + 
+  geom_point(aes(x = Year, y = Filings),color="red") +
+  geom_point(aes(x = Year, y = Approved),color="blue") + 
+  geom_smooth(aes(x = Year, y = Approved)) +  
+  geom_smooth(aes(x = Year, y = Filings)) + 
+  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Oregon",
+       x = "Year", 
+       y = "Number of Filings and Approved Filings") +
+  theme_minimal()
+```
+
+
+
+
+FINAL WRITE UP
+
+
+Load data
+```{r}
+
+gdp <- read.csv("gdp.csv")
+
+gov <- read.csv("govvv.csv")
+
+hispop <- read.csv("hispop.csv")
+
+filings <- read.csv("asylum_filings.csv")
+
+decisions_denied <- read.csv("decisions_denied.csv")
+
+decisions_approved <- read.csv("decisions_approved.csv")
+```
+
+
+I. Asylum filings graphs
+
+
+Graph 1- asylum filings
+
+```{r}
+
+library(ggplot2)
+library(tidyr)
+
+# Loading the data 
+filings <- read.csv("asylum_filings.csv")
+
+
+
+# Converting all year columns to numeric values
+year_cols <- grep("^X[0-9]{4}$", names(filings))
+filings[, year_cols] <- lapply(filings[, year_cols], function(x) as.numeric(gsub("[^0-9.]", "", x)))
+
+# Reshaping the data to a longer format
+asylum_long <- tidyr::pivot_longer(filings, 
+                                   cols = starts_with("X"), 
+                                   names_to = "Year", 
+                                   values_to = "Filings")
+
+# Convert the Year from 'XYYYY' to 'YYYY' format
+asylum_long$Year <- as.numeric(sub("X", "", asylum_long$Year))
+
+# Plot
+ggplot(asylum_long, aes(x = Year, y = Filings, color = State)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  labs(title = "Asylum Filings Over Time",
+       x = "Year",
+       y = "Number of Filings")
+
+
+
+
+```
+
+graph 2 - asylum filings without the labels
+
+```{r}
+
+filings <- read.csv("asylum_filings.csv")
+
+
+
+# Converting all years to numeric values 
+year_cols <- grep("^X[0-9]{4}$", names(filings))
+filings[, year_cols] <- lapply(filings[, year_cols], function(x) as.numeric(gsub("[^0-9.]", "", x)))
+
+# Reshaping the data to a longer format 
+asylum_long <- tidyr::pivot_longer(filings, 
+                                   cols = starts_with("X"), 
+                                   names_to = "Year", 
+                                   values_to = "Filings")
+
+# Converting the Year from 'XYYYY' to 'YYYY' format
+asylum_long$Year <- as.numeric(sub("X", "", asylum_long$Year))
+
+
+# visualization 
+ggplot(asylum_long, aes(x = Year, y = Filings)) +
+  geom_point(alpha = 0.5, color = "black") +  
+  geom_smooth(method = "loess", se = FALSE, color = "red") + 
+  labs(title = "Asylum Filings Over Time",
+       x = "Year",
+       y = "Number of Filings") +
+  theme(legend.position = "none")  
+
+
+```
+graph 3- colored asylum filings over the years
+```{r}
+library(ggplot2)
+library(tidyr)
+
+# Reshaping the data to a longer format
+asylum_long <- tidyr::pivot_longer(filings, 
+                                   cols = starts_with("X"), 
+                                   names_to = "Year", 
+                                   values_to = "Filings")
+
+# Converting the Year from 'XYYYY' to 'YYYY' format
+asylum_long$Year <- as.numeric(sub("X", "", asylum_long$Year))
+
+#visualization
+ggplot(asylum_long, aes(x = Year, y = Filings, color = State)) +
+  geom_point() +
+  theme_minimal() +
+  labs(title = "Asylum Filings Over Time",
+       x = "Year",
+       y = "Number of Filings") +
+  theme(legend.position = "none")  
+
+
+
+```
+
+
+Part 1.2 Merged filings and approved asylums
+```{r}
+
+#loading libraries
+library(ggplot2)
+library(dplyr)
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+#loading files
+
+filings <- read.csv("asylum_filings.csv")
+
+
+decisions_denied <- read.csv("decisions_denied.csv")
+
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+library(tidyverse)
+
+# Data cleaning and preparation/ adjusting column selection as per your dataset's structure/ excluding columns that are not needed
+filings_cleaned <- filings |>
+    select(-State, -matches("All|Never|Detained|Released")) |>
+    gather(key = "Year", value = "Filings") |>
+    group_by(Year) |>
+    summarize(TotalFilings = sum(as.numeric(gsub(",", "", Filings)), na.rm = TRUE))
+
+approvals_cleaned <- approvals |>
+    select(-State) |>
+    gather(key = "Year", value = "Approvals") |>
+    group_by(Year) |>
+    summarize(TotalApprovals = sum(as.numeric(gsub(",", "", Approvals)), na.rm = TRUE))
+
+# Merging data
+merged_data <- merge(filings_cleaned, approvals_cleaned, by = "Year")
+
+
+
+#visualizations
+ggplot(merged_data, aes(x = Year)) +
+    geom_line(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
+    geom_line(aes(y = TotalApprovals, group = 1, color = "Total Approvals")) +
+  geom_point(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
+    geom_point(aes(y = TotalApprovals, group = 1, color = "Total Approvals")) +
+    scale_x_discrete(breaks = merged_data$Year) +
+    scale_y_continuous(labels = scales::comma) +
+    labs(title = "Asylum Filings and Approvals (2001-2023)",
+         x = "Year",
+         y = "Number of Cases",
+         color = "Legend") +
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          legend.title = element_blank(),
+          plot.title = element_text(hjust = 0.5),
+          legend.position = "bottom")
+
+
+```
+
+Part 1.3 Asylum filings and denials
+```{r}
+
+##loading libraries
+library(ggplot2)
+library(dplyr)
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+#loading data
+filings <- read.csv("asylum_filings.csv")
+
+
+decisions_denied <- read.csv("decisions_denied.csv")
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+library(tidyverse)
+
+# Data cleaning and preparation/ adjusting column selection as per your dataset's structure/ excluding columns that are not needed
+filings_cleaned <- filings |>
+    select(-State, -matches("All|Never|Detained|Released")) |>
+    gather(key = "Year", value = "Filings") |>
+    group_by(Year) |>
+    summarize(TotalFilings = sum(as.numeric(gsub(",", "", Filings)), na.rm = TRUE))
+
+denials_cleaned <- decisions_denied |>
+    select(-State) |>
+    gather(key = "Year", value = "Denials") |>
+    group_by(Year) |>
+    summarize(TotalDenials = sum(as.numeric(gsub(",", "", Denials)), na.rm = TRUE))
+
+# Merging data
+merged_data <- merge(filings_cleaned, denials_cleaned, by = "Year")
+
+
+# making "year" as a factor
+merged_data$Year <- factor(merged_data$Year)
+
+# visualization
+ggplot(merged_data, aes(x = Year)) +
+    geom_line(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
+    geom_line(aes(y = TotalDenials, group = 1, color = "Total Denials")) +
+    geom_point(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
+    geom_point(aes(y = TotalDenials, group = 1, color = "Total Denials")) +
+    scale_x_discrete(breaks = unique(merged_data$Year)) + 
+    scale_y_continuous(labels = scales::comma) +
+    labs(title = "Asylum Filings and Denials (2001-2023)",
+         x = "Year",
+         y = "Number of Cases",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          legend.title = element_blank(),
+          plot.title = element_text(hjust = 0.5),
+          legend.position = "bottom")
+
+
+
+```
+
+
+
+
