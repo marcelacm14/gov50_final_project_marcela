@@ -281,7 +281,7 @@ library(png)
 
 ```{r}
 
-rm(list = ls())
+
 #manually filtered data for regressions
 hispop <- read.csv("hispop_reg.csv")
 filings <-read.csv("filings_reg.csv") 
