@@ -1,560 +1,26 @@
 ---
-title: "final project"
+title: "final project: Statistical Analysis by State of How Nicaraguan Asylum claims vary by Key Factors "
 output: html_document
 date: "2023-11-27"
 ---
 
-Milestone 1
-
-I am keen to investigate data concerning Nicaraguan migration post-2018. Following the 2018 protests and the student movement, approximately 700,000 Nicaraguan citizens emigrated between 2018 and 2023, with the majority relocating to Costa Rica, the United States, and Spain. If I secure the data for this research endeavor, my objective will be to analyze the various migration trends of Nicaraguans since 2018. The ultimate aim is to discern the demographics (age, economic status, and ethnicity) most impacted by this migration and to ascertain which nations have been most welcoming to Nicaraguan migrants.
-
-Milestone 2
-
-In this study, I plan to examine the correlation between the 2018 socio-political crisis in Nicaragua and the subsequent trends in asylum filings and decisions in the U.S. I hypothesize that the surge in authoritarianism and the socio-political unrest in Nicaragua during and following 2018 triggered an increase in both the number of Nicaraguans seeking asylum and the number of asylum decisions by U.S. authorities. My sample is comprised of immigration data spanning from the year 2003 to 2023, capturing a broad timeframe that allows for analysis of trends before, during, and after the 2018 crisis. My units of analysis are individual years (2000:2023). The primary explanatory variable of interest is the occurrence of the socio-political crisis, which is primarily centered around the year 2018. This variable is coded =1 for years during and after the crisis (2018-2023) and =0 for years before the crisis (2003-2017).
-My first outcome variable is the count of asylum filings by Nicaraguans in the U.S. in a given year. An increase in this number in years coded as 1 would be indicative of a correlation with the crisis. My second outcome variable is the count of asylum decisions by U.S. authorities for Nicaraguan nationals, which includes both approvals and denials. A significant uptick in these numbers during and after 2018 would also support my hypothesis. These variables are measured using the official data from TRAC and other relevant immigration authorities, ensuring accuracy and comprehensiveness in the counts. If I observe a marked increase in both asylum filings and decisions corresponding with the timing of the socio-political crisis in Nicaragua, this would provide strong support for my hypothesis. Conversely, if I observe no change or a decrease in these numbers in the period of interest, this would argue against my hypothesis. In my regression analysis, positive, significant coefficients on the crisis indicator variable for both outcome variables would indicate support for my hypothesis, showing that the 2018 socio-political crisis in Nicaragua is associated with increased asylum filings and decisions in the U.S.
-
-##Milestone 3
-```{r}
-#downloading packages
-library(ggplot2)
-library(dplyr)
-library(tidyverse)
-library(tidyr)
-#Downloading data
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-Updated_Governors_Data <- read.csv("Updated_Governors_Data.csv")
-library(tidyr)
-library(ggplot2)
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing == "State") |>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  filter(!is.na(Filings))
-ggplot(data = nicaragua_filings, aes(x = as.numeric(Year), y = as.numeric(Filings))) + geom_line((aes(group = 1))) + geom_point() + 
-  labs(title = "Total Asylum Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-library(tidyr)
-library(ggplot2)
-
-# Filter for the 'All' row and select the columns from 2001 to 2023
-long_data <- nicaragua_asylum_filings |>
-  filter(Filing == "All") |>
-  select("X2001":"X2023") |>
-  gather(key = "Year", value = "X2021:X2023")
-
-long_data$Year <- seq(2001,2023,1)
-colnames(long_data) <- c("Year", "Value")
-
-# Plot
-ggplot(data = long_data, aes(x = Year, y = as.numeric(Value),color="hotpink")) +
-  geom_point() +
-  geom_smooth()+
-  labs(title = "Total Asylum Filings Over the Years",
-       x = "Year",
-       y = "Number of Filings") +
-  theme_minimal()
-```
 
 
-##Milestone 4
 
-This analysis explores the effects of the 2018 socio-political crisis in Nicaragua on the number of asylum requests and decisions in the United States. Examining data from 2001 to 2023, it becomes evident that there has been a significant increase in asylum applications from Nicaraguan citizens after 2018, which supports the previously hypothesized surge resulting from the crisis. However, it’s important to note that these findings alone do not fully explain why refugees choose to settle in specific states. The noticeable uptick in both application rates and outcomes, especially in states like California and Texas, implies a possible connection between the political turmoil and the decision to seek asylum. Nevertheless, this analysis acknowledges the importance of considering other influencing factors that might contribute to these trends. The accompanying visual representations illustrate the chronological evolution of asylum requests and decisions, reinforcing the initial assumption that the crisis had an impact. Further research is necessary to disentangle the complex interplay of variables that guide the refugees’ choice of destination and to provide a more comprehensive understanding of these migration patterns.
+I. Introduction and Nicaraguan Asylum Filings and Decisions Trends over the last 23 years
+
+
+For this project, I have chosen to investigate the immigration patterns of Nicaraguans in the United States. The rationale behind my choice lies in the substantial increase in immigration from Latin America to the US over the past decade. Specifically, I have focused on Nicaragua due to the socio-political crisis triggered by protests against Daniel Ortega's authoritarian regime in 2018, which led to a significant rise in immigration to the US, with many seeking asylum.
+
+As part of my analysis, I will initially examine the trends in asylum applications filed in each US state, along with the corresponding approval and denial rates. However, it's important to note that this data only reflects the relationship between asylum filings and decisions, providing a limited view of the overall immigration trend. To gain a more comprehensive understanding of why immigrants choose to settle in particular states, given their background as political asylum seekers fleeing a left-wing oppressive government and the current socio-economic and political conditions offered by each state, it is essential to incorporate additional variables into the analysis.
+
+I hypothesize that factors such as the political affiliation of the state's governor, the percentage of Hispanic populations, and the state's GDP per capita have a significant influence on the trends in asylum applications and decisions among Nicaraguan migrants in the United States post-2018. Specifically, states with a higher proportion of Hispanic populations, governed by parties more supportive of immigration, and with a higher GDP per capita, may experience higher rates of asylum applications and approvals for Nicaraguan migrants.
+
+This study is of particular interest as immigration rates have been on the rise in recent years, and it can provide valuable insights into immigration trends and the decision-making processes of immigrants, taking into account their backgrounds and the conditions offered by each state. This analysis may also contribute to predicting the future implications of these new populations settling in various states.
 
 
 ```{r}
-#downloading packages
-library(ggplot2)
-library(dplyr)
-library(tidyverse)
-library(tidyr)
-#Milestone 4 complete code
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_filings, 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_filings[nicaragua_filings$State=="California",], 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years -- California",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_filings[nicaragua_filings$State=="Texas",], 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years -- Texas",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_asylum_decisions, 
-       aes(x = Year, y = ratio)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Ratio of Approved to Denied Applications Over the Years",
-       x = "Year", 
-       y = "Ratio") +
-  theme_minimal()
-
-ggplot(data = nicaragua_asylum_decisions) + 
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_point(aes(x = Year, y = Denied),color="red") +
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Denied)) + 
-  labs(title = "Total Asylum Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_asylum) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Texas",]) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Texas",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-
-ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Oregon",]) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Oregon",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-
-
-```
-
-```{r}
-#Total Asylum Filings Over the Years
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_filings, 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-```
-
-```{r}
-#Total Asylum Filings Over the Years -- California"
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_filings[nicaragua_filings$State=="California",], 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years -- California",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-```
-```{r}
-## Total Asylum Filings Over the Years -- Texas
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-colnames(nicaragua_asylum_filings)
- 
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-
-ggplot(data = nicaragua_filings[nicaragua_filings$State=="Texas",], 
-       aes(x = Year, y = Filings)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Total Asylum Filings Over the Years -- Texas",
-       x = "Year", 
-       y = "Number of Filings") +
-  theme_minimal()
-
-```
-
-```{r}
-
-##Ratio of Approved to Denied Applications Over the Years
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_asylum_decisions, 
-       aes(x = Year, y = ratio)) + 
-  geom_point() + 
-  geom_smooth() + 
-  labs(title = "Ratio of Approved to Denied Applications Over the Years",
-       x = "Year", 
-       y = "Ratio") +
-  theme_minimal()
-```
-```{r}
-
-##"Total Asylum Filings and Approved Filings Over the Years
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_asylum) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-
-```
-
-
-```{r}
-##Total Asylum Filings and Approved Filings Over the Years - Texas
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-
-
-ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Texas",]) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Texas",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-
-```
-
-```{r}
-
-##Total Asylum Filings and Approved Filings Over the Years - Oregon
-nicaragua_asylum_filings <- read.csv("Nicaragua Asylum Filings.csv")
-nicaragua_asylum_decisions <- read.csv("Nicaragua Asylum Decisions copy.csv")
-
-
-nicaragua_filings <- nicaragua_asylum_filings |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Filings", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Filings =  as.numeric(Filings))
-
-nicaragua_filings_approved <- nicaragua_asylum_decisions |>
-  select(!ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Approved", "X2001":"X2023") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Approved =  as.numeric(Approved))
-
-nicaragua_filings_denied <- nicaragua_asylum_decisions |>
-  select(Filing,All,Asylum.Granted,Asylum.Relief.Denied,Other.Relief.Granted,ends_with("Denied")) |>
-  filter(Filing != "All") |>
-  filter(Filing != "Not Known") |>
-  rename(State=Filing)|>
-  gather(key = "Year", value = "Denied", "X2001.Denied":"X2023.Denied") |>
-  mutate(Year=as.numeric(substr(Year,2,5)))|>
-  mutate(Denied =  as.numeric(Denied))
-
-nicaragua_asylum_decisions <- left_join(nicaragua_filings_approved,nicaragua_filings_denied,by=c("State","Year")) |>
-  mutate(ratio = Approved/Denied )
-
-nicaragua_asylum <- left_join(nicaragua_filings, nicaragua_asylum_decisions,by=c("State","Year"))
-
-ggplot(data = nicaragua_asylum[nicaragua_filings$State=="Oregon",]) + 
-  geom_point(aes(x = Year, y = Filings),color="red") +
-  geom_point(aes(x = Year, y = Approved),color="blue") + 
-  geom_smooth(aes(x = Year, y = Approved)) +  
-  geom_smooth(aes(x = Year, y = Filings)) + 
-  labs(title = "Total Asylum Filings and Approved Filings Over the Years - Oregon",
-       x = "Year", 
-       y = "Number of Filings and Approved Filings") +
-  theme_minimal()
-```
-
-
-
-
-FINAL WRITE UP
-
-
-Load data
-```{r}
-
-gdp <- read.csv("gdp.csv")
-
-gov <- read.csv("govvv.csv")
-
-hispop <- read.csv("hispop.csv")
-
-filings <- read.csv("asylum_filings.csv")
-
-decisions_denied <- read.csv("decisions_denied.csv")
-
-decisions_approved <- read.csv("decisions_approved.csv")
-```
-
-
-I. Asylum filings graphs
-
-
-Graph 1- asylum filings
-
-```{r}
+# Graph 1- asylum filings
 
 library(ggplot2)
 library(tidyr)
@@ -591,10 +57,10 @@ ggplot(asylum_long, aes(x = Year, y = Filings, color = State)) +
 
 ```
 
-graph 2 - asylum filings without the labels
+
 
 ```{r}
-
+#graph 2 - asylum filings without the labels
 filings <- read.csv("asylum_filings.csv")
 
 
@@ -624,8 +90,9 @@ ggplot(asylum_long, aes(x = Year, y = Filings)) +
 
 
 ```
-graph 3- colored asylum filings over the years
 ```{r}
+
+# graph 3- colored asylum filings over the years
 library(ggplot2)
 library(tidyr)
 
@@ -715,9 +182,9 @@ ggplot(merged_data, aes(x = Year)) +
 
 ```
 
-Part 1.3 Asylum filings and denials
-```{r}
 
+```{r}
+#Part 1.3 Asylum filings and denials
 ##loading libraries
 library(ggplot2)
 library(dplyr)
@@ -779,6 +246,548 @@ ggplot(merged_data, aes(x = Year)) +
 
 ```
 
+II. Data Section 
 
 
+For this project, my dependent variable consists of asylum filings spanning from 2001 to 2023, while the independent variables encompass approved decisions per state from 2001 to 2020, denied decisions per state in 2020, GDP per state from 2001 to 2020, the political party affiliation of each state's governor from 2001 to 2020, and the Hispanic population in each state from 2001 to 2020.
+
+My decision to focus on asylum filings in each state, as opposed to the number of Nicaraguan immigrants, is motivated by two key factors. Firstly, asylum filings are meticulously recorded through official channels, providing a more reliable data source, whereas estimating the number of immigrants who enter through illegal means can be challenging. Secondly, asylum filings represent individuals who have a legal basis for seeking entry into the US, typically stemming from past experiences of persecution. Consequently, these filings indicate the number of individuals who may become part of the society through a legal process. This specific group, with their history of persecution, can potentially can be influenced by their political preferences and the opportunities they seek, which, in turn, may impact their choice of settling in particular states.
+
+I opted to utilize asylum filings as my primary independent variable, rather than approved or denied decisions, because the approval or denial of asylum claims does not inherently illustrate immigration trends. Such decisions are often contingent on judicial discretion rather than the variables under examination. Although it is conceivable that judges may align with certain views influenced by a state's immigration policies, this aspect is beyond the scope of this study and would require additional variables to explore comprehensively. 
+
+This data was provided to me by Manuel Orozco, Director of the Migration, Remittances, and Development program at the Inter-American Dialogue. Initially, the data was not structured in tabular format but was accessible through an interactive website called Trac-Immigration, which provides government records of asylum filings and decisions for all countries over the past 23 years. With Manuel's support, I manually extracted data for Nicaragua, recording filings, approvals, and denials for the last 23 years.
+
+For the remaining variables, spanning from 2001 to 2020, I sourced data because I could not obtain data for the most recent three years. In order to conduct regression analyses, I had to standardize the data, limiting it to the same time frame and consistent states. I obtained information on the political affiliation of each state's governor from the Institute for Social Research at Michigan State University. GDP data for the last 20 years was obtained from the Statista database. Lastly, the Hispanic population data for each state was acquired from the United States Census Bureau. However, due to the decennial nature of the census, I needed to manipulate the data to ensure all the requisite variables were available for the regression analysis using a linear fit. In other words, I made the assumption that the hispanic population would grow at a linear rate between each 10 year datapoint from the US census. 
+
+This research is a longitudinal study, as it explores data across a 20-year period. It's distinct from a cross-sectional study, which collects data at a single moment or within a brief timeframe. Cross-sectional studies offer a snapshot of particular variables at a specific point, enabling analysis and comparison at that moment. In contrast, longitudinal studies track changes in trends and behaviors over time. The focus of this study is on examining how these variables change and impact the dependent variable over various time intervals.
+
+```{r}
+#packages and data
+library(tidyverse)
+library(png)
+
+
+```
+
+
+               Description
+ -------------------- -------------------------------------------------------------------
+ `filings` <- Number of asylum filings based on
+ `hispop` <- Hispanic population based on the state 2001-2020
+ `GDP`<- GPD per capita for every state in the asylum filling data between 2001-2020
+ `Gov` <- Govnernor party affiliation from every state and their party affiliation bet
+ `approve` <-Number of asylum filing approved by state from 2001-2020
+ `denied` <-Number of asylum filing denied by state from 2001-2020
+
+```{r}
+
+rm(list = ls())
+#manually filtered data for regressions
+hispop <- read.csv("hispop_reg.csv")
+filings <-read.csv("filings_reg.csv") 
+GDP <- read.csv("GDP_reg.csv")
+Gov <- read.csv("Gov_reg.csv")
+approve <- read.csv("approved_reg.csv") 
+denied <- read.csv("denied_reg.csv")
+
+```
+
+```{r}
+#Gov filter
+
+#republican are now set to -1 and democrats are set to 1 had to use some sort of four loop to do this 
+
+
+for (governor in seq_along(Gov)) {
+  Gov[[governor]] <- gsub(".*Democra.*", "1", Gov[[governor]])
+  Gov[[governor]] <- gsub(".*Republican.*", "-1", Gov[[governor]])
+  Gov[[governor]] <- gsub(".*New Progressive Party.*", NA, Gov[[governor]])
+  Gov[[governor]] <- gsub(".*Independence Party.*", NA, Gov[[governor]])
+  Gov[[governor]] <- gsub(".*N/A.*", NA, Gov[[governor]])
+}
+
+
+```
+
+```{r}
+library(broom)
+library(patchwork)
+library(ggplot2)
+library(tidyr)
+library(png)
+library(knitr)
+
+states <- c("California", "New.York", "Florida", "Texas", "New.Jersey",
+            "Massachusetts", "Virginia", "Illinois", "Maryland", "Washington",
+            "Georgia", "Pennsylvania", "Tennessee", "Louisiana", "Arizona",
+            "Ohio", "Nebraska", "Colorado", "North.Carolina", "Minnesota",
+            "Nevada", "Missouri", "Connecticut", "Oregon", "Michigan",
+            "Utah", "Hawaii", "New.Mexico")
+
+ states
+
+state_data_frames <- list()
+
+for(state in states) {
+
+    state_filings <- as.numeric(filings[[state]])
+    state_GDP <- as.numeric(GDP[[state]])
+    state_Gov <- as.numeric(Gov[[state]])
+    state_denied <- as.numeric(denied[[state]])
+    state_approve <- as.numeric(approve[[state]])
+    state_hispop <- as.numeric(gsub(",", "", hispop[[state]]))
+
+
+
+  state_data <- data.frame(
+
+        Filings = state_filings,
+        GDP = state_GDP,
+        Gov = state_Gov,
+        Denied = state_denied,
+        Approved = state_approve,
+        HispanicPopulation = state_hispop
+    )
+
+
+    state_data_frames[[state]] <- state_data
+}
+
+
+combined_data <- bind_rows(state_data_frames, .id = "State")
+text_size = 12
+#GDP
+ggplot(data = combined_data, aes(x = Filings, y = GDP, color = State, fill = State)) +
+  geom_point() +
+  scale_y_log10()  +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(title = "Linear Regressions: Number of Cases vs. GDP Per Capita by State",
+         x = "Number of Cases",
+         y = " GDP Per Capita") +
+    theme(plot.margin = margin(t = 70, r = 10, b = 10, l = 10, unit = "pt"),
+    axis.text.x = element_text(angle = 90, hjust=1, vjust = .5),
+    plot.title = element_text(hjust = 0, vjust = 18, face = "bold", size = text_size)
+  )
+  
+
+
+#Gov
+ggplot(data = combined_data, aes(x = Filings, y = Gov, color = State, fill = State)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+ labs(title = "Linear Regressions: Number of Cases vs. Governor Party Affiliation",
+         x = "Number of Cases",
+         y = "Governor Party Affiliaton") +
+   theme(plot.margin = margin(t = 70, r = 10, b = 10, l = 10, unit = "pt"),
+    axis.text.x = element_text(angle = 90, hjust=1, vjust = .5),
+    plot.title = element_text(hjust = 0, vjust = 18, face = "bold", size = text_size)
+  )
+
+
+
+#Hispop
+ggplot(data = combined_data, aes(x = Filings, y = HispanicPopulation, color = State, fill = State)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_log10() +   # Logarithmic scale for y-axis+
+  labs(title = "Linear Regressions: Number of Cases vs. Hispanic Population by State",
+         x = "Number of Cases",
+         y = "Hispanic Population") +
+   theme(plot.margin = margin(t = 70, r = 10, b = 10, l = 10, unit = "pt"),
+    axis.text.x = element_text(angle = 90, hjust=1, vjust = .5),
+    plot.title = element_text(hjust = 0, vjust = 18, face = "bold", size = text_size)
+  )
+
+
+
+#Mulitple regression sumary information for each state
+regression_summaries <- list()
+
+for(i in states) {
+  state_data <- subset(combined_data, State == i)
+
+  models <- lm(Filings ~ HispanicPopulation + GDP + Gov, data = state_data)
+
+  regression_summaries[[i]] <- summary(models)
+}
+
+
+```
+
+```{r}
+
+
+
+
+#consolodate data for Texas
+Texas_filings <- as.numeric(filings$Texas)
+year <-  as.numeric(filings$State)
+Texas_GDP <-  as.numeric(GDP$Texas)
+Texas_Gov <-  as.numeric(Gov$Texas)
+Texas_denied <- as.numeric(denied$Texas)
+Texas_approve <- as.numeric(approve$Texas)
+Texas_hispop <- as.numeric(gsub(",", "", hispop$Texas))
+
+#data frame
+Texas_data <- data.frame(Year = year, Filings = Texas_filings, HispanicPopulation = Texas_hispop, GDP = Texas_GDP, Gov = Texas_Gov, den = Texas_denied, app = Texas_approve)
+
+#long data
+long_data_Texas <- gather(Texas_data, key = "variable", value = "value", -Filings, -Year, -app, -den)
+
+#Florida 
+Florida_filings <- as.numeric(filings$Florida)
+year <- as.numeric(filings$State)
+Florida_GDP <- as.numeric(GDP$Florida)
+Florida_Gov <- as.numeric(Gov$Florida)
+Florida_denied <- as.numeric(denied$Florida)
+Florida_approve <- as.numeric(approve$Florida)
+
+Florida_hispop <- as.numeric(gsub(",", "", hispop$Florida))
+
+#data frame
+Florida_data <- data.frame(Year = year, Filings = Florida_filings, HispanicPopulation = Florida_hispop, GDP = Florida_GDP, Gov = Florida_Gov, den = Florida_denied, app = Florida_approve)
+
+#long data
+long_data_Florida <- gather(Florida_data, key = "variable", value = "value", -Filings, -Year, -app, -den)
+
+#California
+California_filings <- as.numeric(filings$California)
+year <-  as.numeric(filings$State)
+California_GDP <-  as.numeric(GDP$California)
+California_Gov <-  as.numeric(Gov$California)
+California_denied <- as.numeric(denied$California)
+California_approve <- as.numeric(approve$California)
+
+California_hispop <- as.numeric(gsub(",", "", hispop$California))
+
+#data frame
+California_data <- data.frame(Year = year, Filings = California_filings, HispanicPopulation = California_hispop, GDP = California_GDP, Gov = California_Gov, den = California_denied, app = California_approve)
+
+#long data 
+long_data_California <- gather(California_data, key = "variable", value = "value", -Filings, -Year, -app, -den)
+
+
+#Florida 
+Florida_filings <- as.numeric(filings$Florida)
+year <- as.numeric(filings$State)
+Florida_GDP <- as.numeric(GDP$Florida)
+Florida_Gov <- as.numeric(Gov$Florida)
+Florida_denied <- as.numeric(denied$Florida)
+Florida_approve <- as.numeric(approve$Florida)
+
+Florida_hispop <- as.numeric(gsub(",", "", hispop$Florida))
+
+#data frame
+Florida_data <- data.frame(Year = year, Filings = Florida_filings, HispanicPopulation = Florida_hispop, GDP = Florida_GDP, Gov = Florida_Gov, den = Florida_denied, app = Florida_approve)
+
+#long data
+long_data_Florida <- gather(Florida_data, key = "variable", value = "value", -Filings, -Year, -app, -den)
+
+#California
+Louisiana_filings <- as.numeric(filings$Louisiana)
+year <-  as.numeric(filings$State)
+Louisiana_GDP <-  as.numeric(GDP$Louisiana)
+Louisiana_Gov <-  as.numeric(Gov$Louisiana)
+Louisiana_denied <- as.numeric(denied$Louisiana)
+Louisiana_approve <- as.numeric(approve$Louisiana)
+Louisiana_hispop <- as.numeric(gsub(",", "", hispop$Louisiana))
+
+#data frame
+Louisiana_data <- data.frame(Year = year, Filings = Louisiana_filings, HispanicPopulation = Louisiana_hispop, GDP = Louisiana_GDP, Gov = Louisiana_Gov, den = Louisiana_denied, app = Louisiana_approve)
+
+#long data 
+long_data_Louisiana <- gather(Louisiana_data, key = "variable", value = "value", -Filings, -Year, -app, -den)
+
+
+```
+
+
+
+III. Result section 
+
+Given the extensive dataset at hand, I decided to perform regression analyses for four specific states: California, Florida, Texas, and Louisiana. The rationale for selecting these states primarily relates to their graphical representation, as they visually exhibit a possible connection between the variables.
+
+Analyzing the regression results for Texas, the coefficient for the Hispanic population is -0.0000176. This implies a slight decrease in the number of asylum cases for each incremental increase in the Hispanic population, but this result is not statistically significant (p-value = 0.368). Similarly, the GDP coefficient is 0.0052397, indicating a minor increase in asylum cases for every unit rise in GDP per capita, but this, too, lacks statistical significance (p-value = 0.155). The absence of statistical significance means we cannot confidently rule out the possibility that these relationships occurred by random chance alone. Therefore, inferring causality from these coefficients would be premature. Further investigation should consider additional variables and the potential for omitted variable bias.
+
+Moving to the regression analysis for Florida, the coefficient for the Hispanic population reveals -0.0004769, signifying a slight reduction in cases for each unit increase in the Hispanic population. Importantly, this result is statistically significant with a p-value of 0.0018210, indicating a robust relationship within the data. The GDP coefficient is 0.0647874, suggesting a positive correlation with the number of cases, and it also achieves statistical significance (p-value = 0.0019682). Nonetheless, despite their statistical significance, these coefficients should not be prematurely interpreted as causal without further investigation to account for potential confounding variables.
+
+In the case of Louisiana's regression findings, the coefficient for the Hispanic population stands at 0.0002495, indicating a slight increase in the number of cases for each unit rise in the Hispanic population, with statistical significance (p-value = 0.0139476). Conversely, the GDP coefficient is -0.0011870, suggesting a slight decrease in cases with an increase in GDP per capita, though this result does not attain statistical significance (p-value = 0.1534442). It's worth noting that the coefficient for the governor variable, at 2.7548629, lacks associated p-values or contextual information, making it challenging to interpret its significance or infer causality. While the statistical significance of the Hispanic population coefficient implies a potential relationship, further analysis is warranted to establish causality conclusively.
+
+Lastly, in the context of the California regression, the coefficient for the Hispanic population is -0.0000512, pointing to an extremely small reduction in cases with each unit increase in the Hispanic population, but this result is not statistically significant (p-value = 0.2829558). The GDP coefficient, at 0.0088341, suggests a minor positive association with the number of cases; however, this result also fails to achieve statistical significance (p-value = 0.2519628). The coefficient for the governor variable is -35.3679313, yet its lack of statistical significance (p-value = 0.1139449) prevents us from confidently interpreting it as indicative of a causal relationship. In light of these results, it appears that within the California dataset, these variables do not exert a substantial or statistically significant influence on the number of asylum cases.
+
+In summary, while the regression analyses provide insights into potential associations, it is crucial to exercise caution in inferring causality, especially in cases where statistical significance is lacking. Further exploration and consideration of additional variables are essential to gain a more comprehensive understanding of these relationships.
+
+
+(I included a regression analysis for all states in my study, but I only discussed the results for those states for which I created graphs)
+
+```{r}
+
+
+# install.packages("patchwork")
+
+
+
+
+text_size = 6
+
+#Texas
+######################################################################################################
+plot1 <- ggplot(subset(long_data_Texas, variable == "GDP"), aes(x = Filings, y = value)) +
+  geom_point(color = "dodgerblue2") +
+  geom_smooth(method = "lm", se = TRUE, color = "dodgerblue2", fill = "dodgerblue2") +
+  labs(title = "Number of cases vs. GDP per Capita",
+         x = "Number of Cases",
+         y = "GDP per Capita",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+plot2 <- ggplot(subset(long_data_Texas, variable == "Gov"), aes(x = Filings, y = value)) +
+  geom_point(color = "orange2") +
+  geom_smooth(method = "lm", se = TRUE, color = "orange2", fill = "orange2") +
+ labs(title = "Number of cases vs. Governor Party",
+         x = "Number of Cases",
+         y = "Republican or Democratic Governors",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+
+plot3 <- ggplot(subset(long_data_Texas, variable == "HispanicPopulation"), aes(x = Filings, y = value)) +
+  geom_point(color = "hotpink2") +
+  geom_smooth(method = "lm", se = TRUE, color = "hotpink2", fill = "hotpink2") +
+ labs(title = "Number of cases vs. Hispanic Population",
+         x = "Number of Cases",
+         y = "Hispanic Population",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+#plots
+combined_plot <- plot1 | plot2 | plot3
+
+# Add an overarching title
+combined_plot_with_title <- combined_plot + 
+    plot_annotation(title = "Texas") 
+      
+combined_plot_with_title
+ggsave("my_combined_plot_Texas.png", combined_plot_with_title, width = 12, height = 4)
+
+
+#Florida
+######################################################################################################
+
+
+plot1 <- ggplot(subset(long_data_Florida, variable == "GDP"), aes(x = Filings, y = value)) +
+  geom_point(color = "dodgerblue2") +
+  geom_smooth(method = "lm", se = TRUE, color = "dodgerblue2", fill = "dodgerblue2") +
+  labs(title = "Number of cases vs. GDP per Capita",
+         x = "Number of Cases",
+         y = "GDP per Capita",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+plot2 <- ggplot(subset(long_data_Florida, variable == "Gov"), aes(x = Filings, y = value)) +
+  geom_point(color = "orange2") +
+  geom_smooth(method = "lm", se = TRUE, color = "orange2", fill = "orange2") +
+ labs(title = "Number of cases vs. Governor Party",
+         x = "Number of Cases",
+         y = "Republican or Democratic Governors",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+
+plot3 <- ggplot(subset(long_data_Florida, variable == "HispanicPopulation"), aes(x = Filings, y = value)) +
+  geom_point(color = "hotpink2") +
+  geom_smooth(method = "lm", se = TRUE, color = "hotpink2", fill = "hotpink2") +
+ labs(title = "Number of cases vs. Hispanic Population",
+         x = "Number of Cases",
+         y = "Hispanic Population",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+combined_plot <- plot1 | plot2 | plot3
+
+# Add an overarching title
+combined_plot_with_title <- combined_plot + 
+    plot_annotation(title = "Florida") 
+
+combined_plot_with_title
+ggsave("my_combined_plot_Florida.png", combined_plot_with_title, width = 12, height = 4)
+
+
+#California
+######################################################################################################
+
+plot1 <- ggplot(subset(long_data_California, variable == "GDP"), aes(x = Filings, y = value)) +
+  geom_point(color = "dodgerblue2") +
+  geom_smooth(method = "lm", se = TRUE, color = "dodgerblue2", fill = "dodgerblue2") +
+  labs(title = "Number of cases vs. GDP per Capita",
+         x = "Number of Cases",
+         y = "GDP per Capita",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+plot2 <- ggplot(subset(long_data_California, variable == "Gov"), aes(x = Filings, y = value)) +
+  geom_point(color = "orange2") +
+  geom_smooth(method = "lm", se = TRUE, color = "orange2", fill = "orange2") +
+ labs(title = "Number of cases vs. Governor Party",
+         x = "Number of Cases",
+         y = "Republican or Democratic Governors",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+
+plot3 <- ggplot(subset(long_data_California, variable == "HispanicPopulation"), aes(x = Filings, y = value)) +
+  geom_point(color = "hotpink2") +
+  geom_smooth(method = "lm", se = TRUE, color = "hotpink2", fill = "hotpink2") +
+ labs(title = "Number of cases vs. Hispanic Population",
+         x = "Number of Cases",
+         y = "Hispanic Population",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+combined_plot <- plot1 | plot2 | plot3
+
+# Add an overarching title
+combined_plot_with_title <- combined_plot + 
+    plot_annotation(title = "California") 
+
+combined_plot_with_title
+ggsave("my_combined_plot_California.png", combined_plot_with_title, width = 12, height = 4)
+
+
+
+#Louisiana
+######################################################################################################
+
+plot1 <- ggplot(subset(long_data_Louisiana, variable == "GDP"), aes(x = Filings, y = value)) +
+  geom_point(color = "dodgerblue2") +
+  geom_smooth(method = "lm", se = TRUE, color = "dodgerblue2", fill = "dodgerblue2") +
+  labs(title = "Number of cases vs. GDP per Capita",
+         x = "Number of Cases",
+         y = "GDP per Capita",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+plot2 <- ggplot(subset(long_data_Louisiana, variable == "Gov"), aes(x = Filings, y = value)) +
+  geom_point(color = "orange2") +
+  geom_smooth(method = "lm", se = TRUE, color = "orange2", fill = "orange2") +
+ labs(title = "Number of cases vs. Governor Party",
+         x = "Number of Cases",
+         y = "Republican or Democratic Governors",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+
+plot3 <- ggplot(subset(long_data_Louisiana, variable == "HispanicPopulation"), aes(x = Filings, y = value)) +
+  geom_point(color = "hotpink2") +
+  geom_smooth(method = "lm", se = TRUE, color = "hotpink2", fill = "hotpink2") +
+ labs(title = "Number of cases vs. Hispanic Population",
+         x = "Number of Cases",
+         y = "Hispanic Population",
+         color = "Legend") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          plot.title = element_text(hjust = 0.5, size = text_size, face = "bold"),
+          legend.position = "bottom")
+
+
+combined_plot <- plot1 | plot2 | plot3
+
+# Add an overarching title
+combined_plot_with_title <- combined_plot + 
+    plot_annotation(title = "Louisiana") 
+
+combined_plot_with_title
+ggsave("my_combined_plot_Louisiana.png", combined_plot_with_title, width = 12, height = 4)
+
+
+
+
+```
+
+```{r}
+#Pull data from Multiple Regression done before for Texas
+
+
+kable((regression_summaries[["Texas"]]$coefficients))
+# kable((regression_summaries[["Texas"]]$r.quared))
+```
+```{r}
+#Pull data from Multiple Regression done before for California
+
+kable((regression_summaries[["California"]]$coefficients))
+
+
+
+```
+
+```{r}
+#Pull data from Multiple Regression done before for Florida
+
+kable((regression_summaries[["Florida"]]$coefficients))
+```
+
+```{r results='asis'}
+#Pull data from Multiple Regression done before for Louisiana
+kable((regression_summaries[["Louisiana"]]$coefficients))
+```
+```{r}
+#Print Summary for all of the States' Multiple Regressions
+for (State in names(regression_summaries)) {
+  cat('\n\n')
+  cat("State: ", State, "\n\n")
+  coefficients_table <- regression_summaries[[State]]$coefficients
+  print(kable(as.data.frame(coefficients_table), format = "simple", caption = "Coefficients"))
+  summary_stats <- regression_summaries[[State]]
+  additional_stats_df <- data.frame(
+    Statistic = c("R-squared", "Adjusted R-squared", "F-statistic", "Degrees of Freedom"),
+    Value = c(summary_stats$r.squared, summary_stats$adj.r.squared, summary_stats$fstatistic[1],summary_stats$df[2] ))
+  print(kable(additional_stats_df, format = "simple", caption = "Additional Statistics"))
+  cat('\n\n')
+}
+
+
+```
+
+IV. Conclusion
+
+The primary aim of this project was to examine the patterns in Nicaraguan asylum requests and determinations in the United States, with a specific focus on the potential influence of various state-level factors. My hypothesis suggested that the political affiliation of a state's governor, the proportion of its Hispanic population, and the state's GDP per capita would have a notable impact on these patterns, particularly after 2018.My regression analyses, which I conducted for selected states (California, Florida, Texas, and Louisiana), revealed a multifaceted and intricate scenario. For instance, in Florida, I identified a statistically significant correlation between the number of asylum cases and both the Hispanic population and GDP. However, in other states like Texas and California, the findings did not reach statistical significance, emphasizing the variation among different regions.
+
+It is important to acknowledge the limitations inherent in this analysis. One major constraint is the reliance on historical data up to 2020, which does not account for recent political or economic developments that could influence asylum patterns. Additionally, the potential presence of confounding factors like legal representation access, or US immigration policies–  which were not considered in the study but capable of affecting the results – should not be disregarded. Another limitation relates to my assumption of linear growth in the Hispanic population between census years. This assumption may not accurately mirror real-world demographic shifts, potentially introducing bias into the analysis. Furthermore, the choice to concentrate on asylum applications rather than approved or denied outcomes was based on data availability and reliability but may not fully capture the subtleties of immigration trends.
+
+If additional time and resources were at my disposal, several enhancements could be implemented. Expanding the dataset to encompass more recent years would furnish a more up-to-date understanding of the patterns. Integrating supplementary variables, such as state-specific immigration policies or international political events, could offer a more holistic perspective. Qualitative research, including interviews with Nicaraguan migrants, could yield deeper insights into individual decision-making processes.
+
+Ultimately, employing advanced statistical methods or machine learning techniques could potentially unveil more intricate relationships between the variables and asylum patterns. Collaborating with experts in immigration law, political science, and sociology could further enrich the analysis, providing a multidisciplinary view of this significant issue.
+
+In conclusion, while this study does shed light on certain aspects of Nicaraguan asylum patterns in the United States, it also underscores the complexity of immigration trends and the ongoing necessity for research in this domain.
 
