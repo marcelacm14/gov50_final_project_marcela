@@ -151,26 +151,26 @@ filings_cleaned <- filings |>
     group_by(Year) |>
     summarize(TotalFilings = sum(as.numeric(gsub(",", "", Filings)), na.rm = TRUE))
 
-approvals_cleaned <- approvals |>
+denials_cleaned <- decisions_denied |>
     select(-State) |>
-    gather(key = "Year", value = "Approvals") |>
+    gather(key = "Year", value = "Denials") |>
     group_by(Year) |>
-    summarize(TotalApprovals = sum(as.numeric(gsub(",", "", Approvals)), na.rm = TRUE))
+    summarize(TotalDenials = sum(as.numeric(gsub(",", "", Denials)), na.rm = TRUE))
 
 # Merging data
-merged_data <- merge(filings_cleaned, approvals_cleaned, by = "Year")
+merged_data <- merge(filings_cleaned, denials_cleaned, by = "Year")
 
 
 
 #visualizations
 ggplot(merged_data, aes(x = Year)) +
     geom_line(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
-    geom_line(aes(y = TotalApprovals, group = 1, color = "Total Approvals")) +
+    geom_line(aes(y = TotalDenials, group = 1, color = "Total Denials")) +
   geom_point(aes(y = TotalFilings, group = 1, color = "Total Filings")) +
-    geom_point(aes(y = TotalApprovals, group = 1, color = "Total Approvals")) +
+    geom_point(aes(y = TotalDenials, group = 1, color = "Total Denials")) +
     scale_x_discrete(breaks = merged_data$Year) +
     scale_y_continuous(labels = scales::comma) +
-    labs(title = "Asylum Filings and Approvals (2001-2023)",
+    labs(title = "Asylum Filings and Denials (2001-2023)",
          x = "Year",
          y = "Number of Cases",
          color = "Legend") +
@@ -761,7 +761,7 @@ kable((regression_summaries[["Florida"]]$coefficients))
 #Pull data from Multiple Regression done before for Louisiana
 kable((regression_summaries[["Louisiana"]]$coefficients))
 ```
-```{r}
+```{r results='asis'}
 #Print Summary for all of the States' Multiple Regressions
 for (State in names(regression_summaries)) {
   cat('\n\n')
