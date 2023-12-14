@@ -1,5 +1,5 @@
 ---
-title: "final project: Statistical Analysis by State of How Nicaraguan Asylum claims vary by Key Factors "
+title: "Final Project: Statistical Analysis by State of How Nicaraguan Asylum claims vary by Key Factors "
 output: html_document
 date: "2023-11-27"
 ---
