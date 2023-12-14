@@ -2,8 +2,8 @@
 title: 'Final Project: Statistical Analysis by State of How Nicaraguan Asylum claims
   vary by Key Factors '
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 date: "2023-12-13"
 ---
  
